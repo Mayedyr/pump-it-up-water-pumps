@@ -1,63 +1,25 @@
 # Pump It Up: Data Mining the Water Table
 
-Team repository for the [DrivenData Pump It Up competition](https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/) and the AI7101 Machine Learning with Python project.
+AI7101 team project based on the [DrivenData Pump It Up challenge](https://www.drivendata.org/competitions/7/pump-it-up-data-mining-the-water-table/). The goal is to predict each Tanzanian waterpoint's `status_group`: `functional`, `functional needs repair`, or `non functional`.
 
-The task is a three-class classification problem: predict whether each Tanzanian waterpoint is `functional`, `functional needs repair`, or `non functional`. The competition metric is classification accuracy.
+## Start working
 
-## Repository layout
-
-```text
-.
-├── data/raw/              # Original competition CSVs (do not edit)
-├── notebooks/             # Numbered exploratory and reporting notebooks
-├── src/pump_it_up/        # Reusable loading and baseline-model code
-├── submissions/           # Generated predictions (ignored by Git)
-├── tests/                 # Fast data-contract tests
-├── CONTRIBUTING.md        # Team workflow and conventions
-└── pyproject.toml          # Environment, package, and tool configuration
-```
-
-## Quick start
-
-Python 3.11 or newer is recommended.
+The four original competition CSVs are in `data/raw/`. Their row counts and checksums are in [data/README.md](data/README.md). Keep these files unchanged.
 
 ```bash
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
-python -m pip install --upgrade pip
-python -m pip install -e '.[dev]'
-
-# Verify the checked-in dataset and package
-python -m pump_it_up.data
-pytest
-
-# Train the starter baseline and write a valid submission
-python -m pump_it_up.train --cv-folds 5
+python -m pip install -r requirements.txt
+jupyter notebook
 ```
 
-The training command reports stratified cross-validation accuracy, fits the full training set, stores the fitted pipeline under `artifacts/`, and writes `submissions/baseline.csv` in the exact row order of the supplied submission template.
+Open [notebooks/project.ipynb](notebooks/project.ipynb). It loads the data, checks that feature rows match their labels, and separates the input features (`X`) from the target (`y`). The remaining sections follow the course project rubric. Add the team's analysis and explain why each transformation and model choice makes sense.
 
-## Suggested team workflow
+## Team workflow
 
-1. Create a short-lived branch from `main` for each experiment or feature.
-2. Start EDA in `notebooks/01_eda.ipynb`; move reusable logic into `src/pump_it_up/`.
-3. Record the validation design, features, parameters, score, and conclusion for every experiment.
-4. Open a pull request; require at least one teammate review before merging.
-5. Never edit files in `data/raw/`. Derived datasets belong in ignored `data/processed/` and must be reproducible from code.
+- Work on a branch for each contribution and use pull requests to review changes before merging to `main`.
+- Keep the original CSVs unchanged. Do not commit generated predictions, models, virtual environments, or notebook checkpoints.
+- Before sharing a notebook change, restart the kernel, run all cells, and check that outputs are readable.
+- Record the validation split, accuracy, and reasoning for each model experiment. Keep the competition test set out of validation.
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for naming, review, and reproducibility conventions.
-
-## Data provenance
-
-The four CSVs in `data/raw/` are the copies supplied for the course project. Their row counts, schema expectations, and SHA-256 checksums are documented in [data/README.md](data/README.md). The data originates from Taarifa and the Tanzanian Ministry of Water and is distributed for the DrivenData competition. Dataset use remains subject to the competition's terms; no separate license is asserted here for the data.
-
-## Project deliverables checklist
-
-- Problem motivation and expected real-world value
-- Reproducible load of `X` and `y`
-- Motivated missing-value, categorical, target, and feature processing
-- Seaborn visual exploration and findings
-- Justified cross-validation procedure and metric
-- Model comparison and hyperparameter search
-- Error analysis, limitations, domain impact, and conclusion
-- Clear final notebook/PDF presentation and prerecorded team video
+The final course deliverables are a clear presentation (PDF or notebook slides), code, and a prerecorded team presentation video. The analysis should cover problem motivation, exploratory plots, preprocessing, cross-validation and model selection, results, limitations, and likely real-world impact.
