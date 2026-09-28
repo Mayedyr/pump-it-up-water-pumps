@@ -1,12 +1,15 @@
 # Dataset
 
-These are the original CSV files supplied for the AI7101 project. Do not modify them in place.
+These are lossless, row-wise partitions of the original CSV files supplied for the AI7101
+project. Partitioning keeps every Git object small enough for reliable cloning; `load_dataset()`
+reassembles the parts in order, so modeling code receives the original tables unchanged. Do not
+modify the parts in place.
 
 | File | Data rows | Purpose | SHA-256 |
 |---|---:|---|---|
-| `raw/train_values.csv` | 59,400 | Training features | `d8ebe40f49fe749a851c8ea28601115cd92442f7b20025fbc33881595ae75f5d` |
-| `raw/train_labels.csv` | 59,400 | Training labels | `ae9b4f893e8e89df3a2187d38cade75c61dfb1d1e156ecd7615fee14fdbe0a24` |
-| `raw/test_values.csv` | 14,850 | Test features | `a222110d5606910953607efa5112eafb1d6c30a483c4cbcd0b92c8306125c9b5` |
+| `raw/train_values_part_*.csv` | 59,400 | Training features | `d8ebe40f49fe749a851c8ea28601115cd92442f7b20025fbc33881595ae75f5d` |
+| `raw/train_labels_part_*.csv` | 59,400 | Training labels | `ae9b4f893e8e89df3a2187d38cade75c61dfb1d1e156ecd7615fee14fdbe0a24` |
+| `raw/test_values_part_*.csv` | 14,850 | Test features | `a222110d5606910953607efa5112eafb1d6c30a483c4cbcd0b92c8306125c9b5` |
 | `raw/submission_format.csv` | 14,850 | Required submission IDs/order | `387b15f692da6196b1f2610be1aa327a8cbe8dffa15454b25882f41a4077b9f6` |
 
 Expected contracts:
@@ -17,6 +20,7 @@ Expected contracts:
 - The target column is `status_group` and contains three classes.
 - Train and test feature columns are identical.
 
-Run `python -m pump_it_up.data` to validate these contracts.
+The hashes above refer to the original complete source files before partitioning. Run
+`python -m pump_it_up.data` to validate the reconstructed tables and their contracts.
 
 Source: Taarifa and the Tanzanian Ministry of Water, via the DrivenData Pump It Up competition. The repository does not grant a separate license for the dataset.

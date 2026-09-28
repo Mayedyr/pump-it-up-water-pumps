@@ -20,11 +20,27 @@ class Dataset:
     submission_format: pd.DataFrame
 
 
+def _read_partitioned_csv(
+    data_dir: Path, stem: str, *, parse_dates: list[str] | None = None
+) -> pd.DataFrame:
+    """Read deterministic row partitions as one logical CSV."""
+    paths = sorted(data_dir.glob(f"{stem}_part_*.csv"))
+    if not paths:
+        raise FileNotFoundError(f"No partitions found for {stem!r} in {data_dir}")
+    return pd.concat(
+        [pd.read_csv(path, parse_dates=parse_dates) for path in paths], ignore_index=True
+    )
+
+
 def load_dataset(data_dir: Path = DEFAULT_DATA_DIR) -> Dataset:
     """Load the four competition files and fail fast on alignment problems."""
-    train_values = pd.read_csv(data_dir / "train_values.csv", parse_dates=["date_recorded"])
-    train_label_frame = pd.read_csv(data_dir / "train_labels.csv")
-    test_values = pd.read_csv(data_dir / "test_values.csv", parse_dates=["date_recorded"])
+    train_values = _read_partitioned_csv(
+        data_dir, "train_values", parse_dates=["date_recorded"]
+    )
+    train_label_frame = _read_partitioned_csv(data_dir, "train_labels")
+    test_values = _read_partitioned_csv(
+        data_dir, "test_values", parse_dates=["date_recorded"]
+    )
     submission = pd.read_csv(data_dir / "submission_format.csv")
 
     if train_values["id"].duplicated().any() or test_values["id"].duplicated().any():
@@ -60,4 +76,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
