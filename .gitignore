@@ -1,0 +1,23 @@
+.DS_Store
+.idea/
+.vscode/
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Generated artifacts (raw competition data is intentionally versioned)
+artifacts/
+data/processed/
+submissions/*.csv
+!submissions/.gitkeep
+
+# Notebook and environment noise
+.ipynb_checkpoints/
+.env
+
