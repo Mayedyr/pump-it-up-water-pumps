@@ -8,7 +8,7 @@ The task is a three-class classification problem: predict whether each Tanzanian
 
 ```text
 .
-├── data/raw/              # Original competition CSVs (do not edit)
+├── data/raw/              # Lossless competition CSV partitions (do not edit)
 ├── notebooks/             # Numbered exploratory and reporting notebooks
 ├── src/pump_it_up/        # Reusable loading and baseline-model code
 ├── submissions/           # Generated predictions (ignored by Git)
