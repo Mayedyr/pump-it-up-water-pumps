@@ -8,7 +8,7 @@ The task is a three-class classification problem: predict whether each Tanzanian
 
 ```text
 .
-├── data/raw/              # Lossless competition CSV partitions (do not edit)
+├── data/raw/              # Original competition CSVs (do not edit)
 ├── notebooks/             # Numbered exploratory and reporting notebooks
 ├── src/pump_it_up/        # Reusable loading and baseline-model code
 ├── submissions/           # Generated predictions (ignored by Git)
@@ -49,7 +49,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for naming, review, and reproducibility c
 
 ## Data provenance
 
-The CSV partitions in `data/raw/` reproduce the four tables supplied for the course project. Their row counts, schema expectations, and original-file SHA-256 checksums are documented in [data/README.md](data/README.md). The data originates from Taarifa and the Tanzanian Ministry of Water and is distributed for the DrivenData competition. Dataset use remains subject to the competition's terms; no separate license is asserted here for the data.
+The four CSVs in `data/raw/` are the copies supplied for the course project. Their row counts, schema expectations, and SHA-256 checksums are documented in [data/README.md](data/README.md). The data originates from Taarifa and the Tanzanian Ministry of Water and is distributed for the DrivenData competition. Dataset use remains subject to the competition's terms; no separate license is asserted here for the data.
 
 ## Project deliverables checklist
 
