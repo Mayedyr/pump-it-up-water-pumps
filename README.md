@@ -13,7 +13,11 @@ python -m pip install -r requirements.txt
 jupyter notebook
 ```
 
-Open [notebooks/project.ipynb](notebooks/project.ipynb). It loads the data, checks that feature rows match their labels, and separates the input features (`X`) from the target (`y`). The remaining sections follow the course project rubric. Add the team's analysis and explain why each transformation and model choice makes sense.
+On macOS, XGBoost may also require the OpenMP runtime: `brew install libomp`.
+
+Open [notebooks/project.ipynb](notebooks/project.ipynb). It contains the full analysis and experiments from the team's original notebook: data checks, exploratory plots, feature engineering, eight model comparisons, holdout evaluation, a hypothetical inspection-policy scenario, and competition submission generation. Add written interpretation and conclusions alongside the results.
+
+The default settings run every experiment on a smaller sample. For final scores and a submission, set `QUICK_RUN=False` and `RUN_FINAL_EVALUATION=True` in the setup cell, restart the kernel, and run all cells. The full search may take considerable time. Generated result CSVs and the submission are saved under ignored `outputs/`.
 
 ## Team workflow
 
