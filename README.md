@@ -19,6 +19,8 @@ Open [notebooks/project.ipynb](notebooks/project.ipynb) for the team's analysis 
 
 The default settings use the full development set (`QUICK_RUN=False`) and enable final holdout evaluation (`RUN_FINAL_EVALUATION=True`). Set `QUICK_RUN=True` for a faster comparison on a smaller sample. Restart the kernel and run all cells to regenerate results. The full search may take considerable time. Generated result CSVs and the submission are saved under ignored `outputs/`.
 
+Hyperparameters and the winning model are selected by cross-validation macro-F1, with accuracy used to break ties between models. Fixed inverse-frequency (balanced) class weighting is used for logistic regression, the tree ensembles, decision tree, and multiclass XGBoost; weights are not searched. KNN and the majority baseline remain unchanged. XGBoost weights are computed separately inside each training fit. The notebook has not yet been rerun with this selection metric or fixed weighting rule; saved outputs and static interpretations still reflect the previous accuracy-based run.
+
 The results discussion and conclusion are static markdown cells based on the saved full-run results. Update these cells after rerunning experiments if the scores change. The notebook includes feature/model rationale, EDA interpretation, limitations, references, and an illustrative inspection-cost sensitivity analysis.
 
 ## Team workflow
