@@ -15,9 +15,11 @@ jupyter notebook
 
 On macOS, XGBoost may also require the OpenMP runtime: `brew install libomp`.
 
-Open [notebooks/project.ipynb](notebooks/project.ipynb). It contains the full analysis and experiments from the team's original notebook: data checks, exploratory plots, feature engineering, eight model comparisons, holdout evaluation, a hypothetical inspection-policy scenario, and competition submission generation. Add written interpretation and conclusions alongside the results.
+Open [notebooks/project.ipynb](notebooks/project.ipynb) for the team's analysis and presentation. It includes exploratory plots, feature engineering, eight model comparisons, holdout evaluation, an illustrative inspection-policy scenario, and competition submission generation, with explanations, interpretation, and conclusions.
 
-The default settings run every experiment on a smaller sample. For final scores and a submission, set `QUICK_RUN=False` and `RUN_FINAL_EVALUATION=True` in the setup cell, restart the kernel, and run all cells. The full search may take considerable time. Generated result CSVs and the submission are saved under ignored `outputs/`.
+The default settings use the full development set (`QUICK_RUN=False`) and enable final holdout evaluation (`RUN_FINAL_EVALUATION=True`). Set `QUICK_RUN=True` for a faster comparison on a smaller sample. Restart the kernel and run all cells to regenerate results. The full search may take considerable time. Generated result CSVs and the submission are saved under ignored `outputs/`.
+
+The results discussion and conclusion are static markdown cells based on the saved full-run results. Update these cells after rerunning experiments if the scores change. The notebook includes feature/model rationale, EDA interpretation, limitations, references, and an illustrative inspection-cost sensitivity analysis.
 
 ## Team workflow
 

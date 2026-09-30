@@ -17,6 +17,6 @@ Expected contracts:
 - The target column is `status_group` and contains three classes.
 - Train and test feature columns are identical.
 
-Run `python -m pump_it_up.data` to validate these contracts.
+The data-loading cell in `notebooks/project.ipynb` validates these contracts.
 
 Source: Taarifa and the Tanzanian Ministry of Water, via the DrivenData Pump It Up competition. The repository does not grant a separate license for the dataset.
