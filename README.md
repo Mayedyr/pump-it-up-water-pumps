@@ -21,7 +21,7 @@ The default settings use the full development set (`QUICK_RUN=False`) and enable
 
 Hyperparameters and the winning model are selected by cross-validation macro-F1, with accuracy used to break ties between models. Fixed inverse-frequency (balanced) class weighting is used for logistic regression, the tree ensembles, decision tree, and multiclass XGBoost; weights are not searched. KNN and the majority baseline remain unchanged. XGBoost weights are computed separately inside each training fit. The notebook has not yet been rerun with this selection metric or fixed weighting rule; saved outputs and static interpretations still reflect the previous accuracy-based run.
 
-The results discussion and conclusion are static markdown cells based on the saved full-run results. Update these cells after rerunning experiments if the scores change. The notebook includes feature/model rationale, EDA interpretation, limitations, references, and an illustrative inspection-cost sensitivity analysis.
+The results discussion and conclusion are static markdown cells based on the saved full-run results. Update these cells after rerunning experiments if the scores change. The notebook includes feature/model rationale, EDA interpretation, limitations, references, and a practical impact estimate based on inspection workload, attention-case coverage, and missed cases.
 
 ## Team workflow
 
